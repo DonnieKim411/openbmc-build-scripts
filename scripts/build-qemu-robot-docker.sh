@@ -59,6 +59,10 @@ ${MIRROR}
 
 ARG DEBIAN_FRONTEND=noninteractive
 
+RUN grep -q ${GROUPS[0]} /etc/group || groupadd -g ${GROUPS[0]} ${USER}
+RUN grep -q ${UID} /etc/passwd || useradd -d ${HOME} -m -u ${UID} -g ${GROUPS[0]} \
+                    ${USER}
+
 RUN apt-get update && apt-get install -yy \
     debianutils \
     gawk \
@@ -145,9 +149,7 @@ RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.29.0/geckod
         && mv geckodriver /usr/local/bin \
         && chmod a+x /usr/local/bin/geckodriver
 
-RUN grep -q ${GROUPS[0]} /etc/group || groupadd -g ${GROUPS[0]} ${USER}
-RUN grep -q ${UID} /etc/passwd || useradd -d ${HOME} -m -u ${UID} -g ${GROUPS[0]} \
-                    ${USER}
+
 USER ${USER}
 RUN /bin/bash
 EOF
