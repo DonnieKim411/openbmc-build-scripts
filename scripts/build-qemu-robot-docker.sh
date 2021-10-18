@@ -63,6 +63,7 @@ RUN grep -q ${GROUPS[0]} /etc/group || groupadd -g ${GROUPS[0]} ${USER}
 RUN grep -q ${UID} /etc/passwd || useradd -d ${HOME} -m -u ${UID} -g ${GROUPS[0]} \
                     ${USER}
 
+# fix the python version to 3.6.12
 RUN apt-get update && apt-get install -yy \
     debianutils \
     gawk \
@@ -70,7 +71,7 @@ RUN apt-get update && apt-get install -yy \
     python \
     python-dev \
     python-setuptools \
-    python3.6.12 \ # fix the python3 at 3.6.12
+    python3.6.12 \ 
     python3-dev \
     python3-setuptools \
     socat \
