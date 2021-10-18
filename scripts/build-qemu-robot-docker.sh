@@ -71,7 +71,7 @@ RUN apt-get update && apt-get install -yy \
     python \
     python-dev \
     python-setuptools \
-    python3.6.12 \ 
+    python3.6 \ 
     python3-dev \
     python3-setuptools \
     socat \
