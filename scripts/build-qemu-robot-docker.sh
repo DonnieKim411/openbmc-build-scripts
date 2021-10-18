@@ -70,7 +70,7 @@ RUN apt-get update && apt-get install -yy \
     python \
     python-dev \
     python-setuptools \
-    python3 \
+    python3.6.12 \ # fix the python3 at 3.6.12
     python3-dev \
     python3-setuptools \
     socat \
