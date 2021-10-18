@@ -20,7 +20,7 @@ set -uo pipefail
 http_proxy=${http_proxy:-}
 
 DOCKER_IMG_NAME=${1:-"openbmc/ubuntu-robot-qemu"}
-DISTRO=${2:-"ubuntu:focal"}
+DISTRO=${2:-"ubuntu:bionic"}
 UBUNTU_MIRROR=${UBUNTU_MIRROR:-""}
 PIP_MIRROR=${PIP_MIRROR:-""}
 
@@ -63,7 +63,7 @@ RUN grep -q ${GROUPS[0]} /etc/group || groupadd -g ${GROUPS[0]} ${USER}
 RUN grep -q ${UID} /etc/passwd || useradd -d ${HOME} -m -u ${UID} -g ${GROUPS[0]} \
                     ${USER}
 
-# fix the python version to 3.6.12
+# fix the python version to 3.6
 RUN apt-get update && apt-get install -yy \
     debianutils \
     gawk \
