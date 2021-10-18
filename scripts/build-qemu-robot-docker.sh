@@ -65,6 +65,7 @@ RUN grep -q ${UID} /etc/passwd || useradd -d ${HOME} -m -u ${UID} -g ${GROUPS[0]
 
 # fix the python version to 3.6
 RUN apt-get update && apt-get install -yy \
+    apt-utils \
     debianutils \
     gawk \
     git \
@@ -117,6 +118,7 @@ RUN apt-get update -qqy \
 ENV HOME ${HOME}
 
 ${PIP_MIRROR_CMD}
+RUN pip3 install --upgrade pip
 
 RUN pip3 install \
     tox \
